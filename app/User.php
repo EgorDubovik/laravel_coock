@@ -25,6 +25,10 @@ class User extends Authenticatable
         return $this->where('name', $phone)->first();
     }
 
+    public function address(){
+        return $this->hasOne("App\Address");
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

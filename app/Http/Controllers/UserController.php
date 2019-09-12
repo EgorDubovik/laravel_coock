@@ -45,6 +45,19 @@ class UserController extends Controller
 
     public function getUser(Request $request){
         $user = $request->user();
+        $user->load("address");
         return response()->json($user);
+    }
+
+    public function setTypeCustomer(Request $request){
+        $evalieble_status = [1,2];
+        $is_coocked = $request->is_coocked;
+        if(in_array($is_coocked,$evalieble_status)){
+            $request->user()->is_coocked = $is_coocked;
+            $request->user()->save();
+            return response()->json(["status"=>"true"]);
+        } else {
+            return response()->json(["status"=>"false","messange"=>"invalid status"]);
+        }
     }
 }
