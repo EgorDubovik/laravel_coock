@@ -11,6 +11,10 @@ class Address extends Model
     protected $fillable = [
     	"lng",
     	"lat",
+    	"state",
+    	"zip-code",
+    	"address",
+    	
     ];
 
     protected $hidden = [

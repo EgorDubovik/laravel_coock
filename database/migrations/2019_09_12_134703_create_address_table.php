@@ -16,11 +16,11 @@ class CreateAddressTable extends Migration
         Schema::create('address', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer("user_id");
-            $table->float("lng");
-            $table->float("lat");
-            $table->string("state");
-            $table->integer("zip-code");
-            $table->string("address");
+            $table->float("lng")->nullable();
+            $table->float("lat")->nullable();
+            $table->string("state")->nullable();
+            $table->integer("zip-code")->nullable();
+            $table->string("address")->nullable();
             $table->timestamps();
         });
     }
