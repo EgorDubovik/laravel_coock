@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -57,7 +58,55 @@ class UserController extends Controller
             $request->user()->save();
             return response()->json(["status"=>"true"]);
         } else {
-            return response()->json(["status"=>"false","messange"=>"invalid status"]);
+            return response()->json(["status"=>"false","message"=>"invalid status"]);
         }
+    }
+
+    public function setAvatar(Request $request){
+
+        $fieldName = "avatar";
+
+        $limitFileWidthAndHeight = 500;
+        $return = [
+            "status"=>false,
+            "code"=>0,
+        ];
+
+
+        $validate = Validator::make($request->all(),[
+            $fieldName => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        
+        if($validate->fails()){
+            $return['code']=2;
+            $return['message'] = $validate->errors();
+            return response()->json($return);
+        }
+
+        $file = $request->file($fieldName);
+
+        $fileInfo['name'] = $file->getClientOriginalName();
+        $fileInfo['size'] = $file->getSize();
+        $fileInfo['ext'] = $file->getClientOriginalExtension();
+        // Get image size (width and heught)
+        $imagedetails = getimagesize($_FILES[$fieldName]['tmp_name']);
+        $fileInfo['width'] = $imagedetails[0];
+        $fileInfo['height'] = $imagedetails[1];
+
+        if($fileInfo['width']<$limitFileWidthAndHeight || $fileInfo['height']<$limitFileWidthAndHeight){
+            $return['code'] = 1; // Error width or height size;
+        } else {
+            $newname = uniqid('img_').".jpg";
+            $file->move("images",$newname);
+            $request->user()->avatar = $newname;
+            $request->user()->save();
+            $return['status'] = true;
+        }
+
+
+
+
+        return response()->json($return);
     }
 }

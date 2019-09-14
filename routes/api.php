@@ -17,6 +17,7 @@ Route::group(['middleware'=>'auth:api'],function(){
 	Route::get("/getUser","UserController@getUser");
 	Route::post("/setTypeCustomer","UserController@setTypeCustomer");
 	Route::post("/setAddress","AddressController@setAddress");
+	Route::post("/setAvatar","UserController@setAvatar");
 });
 
 Route::get("/getCode","UserController@getCode");
