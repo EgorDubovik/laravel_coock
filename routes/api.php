@@ -22,3 +22,6 @@ Route::group(['middleware'=>'auth:api'],function(){
 
 Route::get("/getCode","UserController@getCode");
 Route::get("/getToken","UserController@getToken");
+Route::get("/test",function(){
+	return response()->json(["test","word"]);
+});
