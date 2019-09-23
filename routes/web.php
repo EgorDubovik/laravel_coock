@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +12,11 @@
 
 Route::get('/', function () {
     return view('welcome');
+})->name("start");
+
+// Auth::routes();
+
+Route::get('home', 'HomeController@index');
+Route::group(['middleware' => 'checkToken'], function () {
+	
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
