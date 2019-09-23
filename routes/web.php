@@ -14,6 +14,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name("start");
 
+Route::get("/login","LoginController@loginPhone");
+Route::post("/getCode","LoginController@getCode")->name("phone");
+Route::get("/loginCode","LoginController@loginCode")->name("code");
 // Auth::routes();
 
 Route::get('home', 'HomeController@index');

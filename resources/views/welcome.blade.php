@@ -1,14 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<div class="container">
-
-	</div>
-
-
-
-</body>
-</html>
+welcome page
