@@ -35,6 +35,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    public function menu(){
+        return $this->hasMany("App\Menu");
+    }
+
     protected $hidden = [
         'password',"remember_token",
     ];

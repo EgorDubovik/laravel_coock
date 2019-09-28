@@ -17,12 +17,16 @@ class UserController extends Controller
     }
 
     public function getCode(Request $request){
-    	$phone = $request->phone;
-    	$user = User::firstOrNew(["name"=>$phone]);
-    	$code = mt_rand(1000,9999);
-    	$user->password = bcrypt($code);
-    	$user->save();
-    	return response()->json(["code"=>$code]);
+        if($request->phone){
+        	$phone = $request->phone;
+        	$user = User::firstOrNew(["name"=>$phone]);
+        	$code = mt_rand(1000,9999);
+        	$user->password = bcrypt($code);
+        	$user->save();
+        	return response()->json(["status"=>true,"code"=>$code]);
+        } else {
+            return response()->json(["status"=>false,"message"=>"need phone field"]);
+        }
     }
 
     public function getToken(Request $request){
@@ -39,7 +43,6 @@ class UserController extends Controller
 			'oauth/token',
 			'POST'
 		);
-
 
 		return Route::dispatch($proxy);
     }
@@ -103,10 +106,26 @@ class UserController extends Controller
             $request->user()->save();
             $return['status'] = true;
         }
-
-
-
-
         return response()->json($return);
+    }
+
+    public function addMenu(Request $request){
+        $title = ($request->title) ? $request->title : null;
+        $description = ($request->description) ? $request->description : null;
+        $weight = ($request->weight) ? $request->weight : null;
+        $valume = ($request->valume) ? $request->valume : null;
+        $price = ($request->price) ? $request->price : null;
+
+        $request->user()->menu()->create(
+            [   
+                "title"=>$title,
+                "description"=>$description,
+                "weight" => $weight,
+                "valume" => $valume,
+                "price" => $price
+            ]
+        );
+
+        return response()->json(["status"=>true]);
     }
 }
