@@ -40,6 +40,10 @@ class User extends Authenticatable
         return $this->hasMany("App\Menu");
     }
 
+    public function week_menu(){
+        return $this->hasMany("App\WeekMenu");
+    }
+
     protected $hidden = [
         'password',"remember_token",
     ];

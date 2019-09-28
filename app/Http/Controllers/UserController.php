@@ -128,4 +128,36 @@ class UserController extends Controller
 
         return response()->json(["status"=>true]);
     }
+
+    public function getMyMenu(Request $request){
+        $menu = $request->user()->menu()->get();
+        return response()->json([
+            "status"=>true,
+            "result"=>$menu
+        ]);
+    }
+
+    public function setWeekMenu(Request $request){
+        $array_wd = ["mon","tue","wed","thu","fri","sat","sun"];
+        $wd = $request->wd;
+        $menu_ids = explode(',', $request->menu_ids);
+        $indxd = array_search($wd,$array_wd);
+        $ret = array($wd=>null);
+        foreach ($menu_ids as $key => $value) {
+            $request->user()->week_menu()->firstOrCreate([
+                "week_day_id"=>$indxd,
+                "menu_id" => $value
+            ]);
+        }
+
+        return response()->json(["status"=>true]);
+    }
+
+    public function getMyWeekMenu(Request $request){
+        $week_menu = $request->user()->week_menu()->get();
+        return response()->json([
+            "status"=>true,
+            "result"=>$week_menu
+        ]);
+    } 
 }
