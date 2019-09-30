@@ -50,6 +50,7 @@ class UserController extends Controller
     public function getUser(Request $request){
         $user = $request->user();
         $user->load("address");
+        $user->load("week_menu");
         return response()->json($user);
     }
 
@@ -143,6 +144,7 @@ class UserController extends Controller
         $menu_ids = explode(',', $request->menu_ids);
         $indxd = array_search($wd,$array_wd);
         $ret = array($wd=>null);
+        $request->user()->week_menu()->where("week_day_id",$indxd)->delete();
         foreach ($menu_ids as $key => $value) {
             $request->user()->week_menu()->firstOrCreate([
                 "week_day_id"=>$indxd,

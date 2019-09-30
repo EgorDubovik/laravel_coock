@@ -1,0 +1,71 @@
+[33mcommit cd082b41faaac41559be14d2e1c98e4aef84c961[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Sat Sep 28 15:52:11 2019 -0500
+
+    add set week menu
+
+[33mcommit 8c922dd9e3add83c81404015dde71976845150d6[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Sat Sep 28 14:35:12 2019 -0500
+
+    create add menu item
+
+[33mcommit 7ce1c071b4cbd8adfa79cd73cf09cd39c8a31d90[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Mon Sep 23 17:50:28 2019 -0500
+
+    fix Kernel problem
+
+[33mcommit 14e010753135786e0278b03960aebfbdbc31e3b6[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Mon Sep 23 17:39:32 2019 -0500
+
+    add cros;
+
+[33mcommit 18096a60f14b6d966c8b69c029681c2b08d31645[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Mon Sep 23 15:45:17 2019 -0500
+
+    add web auth
+
+[33mcommit 9f7b48f3503e30571bd80576ddd3d9b32fefd9e2[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Mon Sep 23 11:26:02 2019 -0500
+
+    add middleware to checkCookie
+
+[33mcommit 8a16552b7ecad8bca9e8bb7592effa1b80b0757a[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Sat Sep 14 11:23:07 2019 -0400
+
+    add advatar for users
+
+[33mcommit 444256f50eea9384f2b33bb2bf00541a42067ad0[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Fri Sep 13 19:48:46 2019 -0400
+
+    put addres information;
+
+[33mcommit 32a224aa2e126d2cd2266b459991a49fa0034e86[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Thu Sep 12 11:06:57 2019 -0400
+
+    add address for users;
+
+[33mcommit cedc24e7cb27d1e1a56459866625bb87d730c0e4[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Wed Sep 11 19:20:20 2019 -0400
+
+    add registr and auth users
+
+[33mcommit 4208b837a02f82963d43f088c8c5079103285e38[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Wed Sep 4 13:10:13 2019 -0400
+
+    add auth passport
+
+[33mcommit c44f75e2653785ccfdf4dfb797e155e48aefce3a[m
+Author: EgorDubovik <posik.web.m@gmail.com>
+Date:   Mon Aug 12 14:32:42 2019 -0400
+
+    create project povar
