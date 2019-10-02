@@ -22,6 +22,7 @@ class UserController extends Controller
         	$user = User::firstOrNew(["name"=>$phone]);
         	$code = mt_rand(1000,9999);
         	$user->password = bcrypt($code);
+            $user->is_coocked = 0;
         	$user->save();
         	return response()->json(["status"=>true,"code"=>$code]);
         } else {
@@ -53,9 +54,11 @@ class UserController extends Controller
         $user->load("week_menu");
         return response()->json($user);
     }
-
+  
     public function setTypeCustomer(Request $request){
-        $evalieble_status = [1,2];
+        // !!!!!!!!!!!!! Добавить проверку что бы нельзя было повторно менять значение 
+    
+        $evalieble_status = [1,2]; // 1 - povar
         $is_coocked = $request->is_coocked;
         if(in_array($is_coocked,$evalieble_status)){
             $request->user()->is_coocked = $is_coocked;
